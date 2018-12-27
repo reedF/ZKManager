@@ -15,33 +15,28 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/lg")
 public class LoginController {
 
-    @RequestMapping(value="/up")
-    public @ResponseBody
-    Boolean query(
-            @RequestParam(required=false) String username,
-            @RequestParam(required=false) String password,
-            HttpSession session
-    ){
-        boolean returnval = false;
-        if(username!=null && password!=null && username.equals(ConfigUtil.getConfigMessage("userquery")) && password.equals(ConfigUtil.getConfigMessage("passquery"))){
-            returnval=true;
-            session.setAttribute("userP",true);
-            session.setAttribute("userM",false);
-        }else if(username!=null && password!=null && username.equals(ConfigUtil.getConfigMessage("useradmin")) && password.equals(ConfigUtil.getConfigMessage("passadmin"))){
-            returnval=true;
-            session.setAttribute("userP",true);
-            session.setAttribute("userM",true);
-        }
-        return returnval ;
-    }
+	@RequestMapping(value = "/up")
+	public @ResponseBody Boolean query(@RequestParam(required = false) String username,
+			@RequestParam(required = false) String password, HttpSession session) {
+		boolean returnval = false;
+		if (username != null && password != null && username.equals(ConfigUtil.getConfigMessage("userquery"))
+				&& password.equals(ConfigUtil.getConfigMessage("passquery"))) {
+			returnval = true;
+			session.setAttribute("userP", true);
+			session.setAttribute("userM", false);
+		} else if (username != null && password != null && username.equals(ConfigUtil.getConfigMessage("useradmin"))
+				&& password.equals(ConfigUtil.getConfigMessage("passadmin"))) {
+			returnval = true;
+			session.setAttribute("userP", true);
+			session.setAttribute("userM", true);
+		}
+		return returnval;
+	}
 
-    @RequestMapping(value="/out")
-    public @ResponseBody
-    void logout(
-            HttpSession session
-    ){
-        session.removeAttribute("userP");
-        session.removeAttribute("userM");
-    }
+	@RequestMapping(value = "/out")
+	public @ResponseBody void logout(HttpSession session) {
+		session.removeAttribute("userP");
+		session.removeAttribute("userM");
+	}
 
 }

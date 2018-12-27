@@ -12,10 +12,12 @@
     
 # 主要页面
 登录
+http://localhost:8080/login 
 
 <img  src="https://github.com/xvshu/ZKManager/blob/master/doc/login.jpg">
 
 主页
+http://localhost:8080/home  
 
 <img  src="https://github.com/xvshu/ZKManager/blob/master/doc/main.jpg">
 
